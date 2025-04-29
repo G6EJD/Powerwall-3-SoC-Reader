@@ -1,0 +1,15 @@
+import requests
+
+site_id = "your-site-id"
+api_token = "your-developers_api-key"
+config = {'operational_mode': 'autonomous'}
+
+response = requests.post(
+    url=f'https://api.netzero.energy/api/v1/{site_id}/config',
+    headers={'Authorization': f'Bearer {api_token}'},
+    json=config,
+)
+print(response.json())
+SoC = response.json()['percentage_charged']
+
+print (SoC)
